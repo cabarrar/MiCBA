@@ -1,0 +1,17 @@
+{
+  "name": "MiCBA",
+  "short_name": "MiCBA",
+  "description": "Sistema de Entretenimiento y Noticias Retro",
+  "start_url": "/MiCBA/",
+  "display": "standalone",
+  "background_color": "#0d0221",
+  "theme_color": "#ff007f",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/Zhf6P8Y/micba-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
