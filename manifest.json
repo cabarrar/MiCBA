@@ -8,16 +8,14 @@
   "theme_color": "#ff007f",
   "icons": [
     {
-      "src": "https://i.ibb.co/Zhf6P8Y/micba-icon.png",
+      "src": "icon.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "https://i.ibb.co/Zhf6P8Y/micba-icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
