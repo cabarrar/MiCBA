@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiCBA</title>
     
-    <link rel="manifest" href="/MiCBA/manifest.json">
+    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0d0221">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     
@@ -118,11 +118,12 @@
     </div>
 
     <script>
+        // REGISTRO DE SERVICE WORKER CORREGIDO
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/MiCBA/sw.js')
-                    .then(reg => console.log('Service Worker registrado', reg))
-                    .catch(err => console.log('Error al registrar SW', err));
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW OK'))
+                    .catch(err => console.log('SW Error', err));
             });
         }
     </script>

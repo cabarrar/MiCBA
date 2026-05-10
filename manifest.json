@@ -2,7 +2,7 @@
   "name": "MiCBA",
   "short_name": "MiCBA",
   "description": "Sistema de Entretenimiento y Noticias Retro",
-  "start_url": "/MiCBA/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0d0221",
   "theme_color": "#ff007f",
