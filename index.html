@@ -31,19 +31,10 @@
             opacity: 0.8;
         }
 
-        .logo {
-            font-size: 2rem;
-            letter-spacing: 6px;
-            color: #00ff41;
-        }
-
+        .logo { font-size: 2rem; letter-spacing: 6px; }
         #clock { font-size: 1.1rem; opacity: 0.6; }
 
-        .prompt {
-            margin-bottom: 20px;
-            opacity: 0.5;
-            font-size: 1rem;
-        }
+        .prompt { margin-bottom: 20px; opacity: 0.5; font-size: 1rem; }
 
         .menu { display: flex; flex-direction: column; gap: 2px; }
 
@@ -55,7 +46,7 @@
             text-decoration: none;
             color: #00ff41;
             border-left: 3px solid transparent;
-            transition: border-color 0.1s, background 0.1s;
+            cursor: pointer;
         }
 
         .item:hover, .item:focus {
@@ -66,24 +57,48 @@
 
         .item:active { background: rgba(0,255,65,0.15); }
 
-        .item .n {
-            color: rgba(0,255,65,0.4);
-            min-width: 24px;
-            font-size: 1rem;
-        }
-
+        .item .n { color: rgba(0,255,65,0.4); min-width: 24px; font-size: 1rem; }
         .item .emoji { font-size: 1.2rem; }
+        .item .text strong { display: block; letter-spacing: 2px; font-size: 1.2rem; }
+        .item .text span { font-size: 0.9rem; opacity: 0.45; }
 
-        .item .text strong {
-            display: block;
-            letter-spacing: 2px;
-            font-size: 1.2rem;
+        /* Submenú */
+        .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 2px;
+            margin-left: 20px;
+            border-left: 1px solid rgba(0,255,65,0.3);
+            padding-left: 12px;
+            margin-top: 2px;
+            margin-bottom: 4px;
         }
 
-        .item .text span {
-            font-size: 0.9rem;
-            opacity: 0.45;
+        .submenu.open { display: flex; }
+
+        .submenu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 8px;
+            text-decoration: none;
+            color: #00ff41;
+            font-size: 1.1rem;
+            border-left: 3px solid transparent;
         }
+
+        .submenu a:hover, .submenu a:focus {
+            border-left-color: #00ff41;
+            background: rgba(0,255,65,0.07);
+            outline: none;
+        }
+
+        .submenu a .sn { color: rgba(0,255,65,0.35); min-width: 24px; font-size: 0.9rem; }
+        .submenu a .st { letter-spacing: 1px; }
+        .submenu a .sd { display: block; font-size: 0.85rem; opacity: 0.4; }
+
+        .toggle-arrow { margin-left: auto; opacity: 0.5; font-size: 1rem; transition: transform 0.2s; }
+        .item.open .toggle-arrow { transform: rotate(90deg); }
 
         .footer {
             margin-top: 28px;
@@ -114,6 +129,7 @@
     <div class="prompt">C:\MICBA&gt; <span class="cursor"></span></div>
 
     <nav class="menu">
+
         <a href="https://www.youtube.com/results?search_query=raul+cimas" class="item">
             <span class="n">01</span>
             <span class="emoji">🕹️</span>
@@ -122,6 +138,7 @@
                 <span>Protocolo Risas · YouTube</span>
             </span>
         </a>
+
         <a href="https://www.google.com/search?q=noticias+Huelva+Sevilla+España&tbm=nws" class="item">
             <span class="n">02</span>
             <span class="emoji">📡</span>
@@ -130,6 +147,7 @@
                 <span>Huelva / Sevilla / España</span>
             </span>
         </a>
+
         <a href="https://www.youtube.com/@LaLiga/videos" class="item">
             <span class="n">03</span>
             <span class="emoji">⚽</span>
@@ -138,6 +156,62 @@
                 <span>Resúmenes · YouTube</span>
             </span>
         </a>
+
+        <!-- Juegos con submenú -->
+        <div class="item" id="juegos-toggle" onclick="toggleSubmenu()">
+            <span class="n">04</span>
+            <span class="emoji">🎮</span>
+            <span class="text">
+                <strong>JUEGOS</strong>
+                <span>Puzle y Arcade</span>
+            </span>
+            <span class="toggle-arrow">►</span>
+        </div>
+
+        <div class="submenu" id="juegos-submenu">
+
+            <a href="https://www.crazygames.com/t/puzzle" target="_blank">
+                <span class="sn">4.1</span>
+                <span class="text">
+                    <span class="st">🧩 PUZLES · CrazyGames</span>
+                    <span class="sd">Los más populares HTML5</span>
+                </span>
+            </a>
+
+            <a href="https://poki.com/es/puzzle" target="_blank">
+                <span class="sn">4.2</span>
+                <span class="text">
+                    <span class="st">🧩 PUZLES · Poki</span>
+                    <span class="sd">Optimizado para móvil</span>
+                </span>
+            </a>
+
+            <a href="https://www.crazygames.com/t/arcade" target="_blank">
+                <span class="sn">4.3</span>
+                <span class="text">
+                    <span class="st">👾 ARCADE · CrazyGames</span>
+                    <span class="sd">Clásicos y nuevos</span>
+                </span>
+            </a>
+
+            <a href="https://poki.com/es/arcade" target="_blank">
+                <span class="sn">4.4</span>
+                <span class="text">
+                    <span class="st">👾 ARCADE · Poki</span>
+                    <span class="sd">Optimizado para móvil</span>
+                </span>
+            </a>
+
+            <a href="https://www.miniclip.com/games/en/" target="_blank">
+                <span class="sn">4.5</span>
+                <span class="text">
+                    <span class="st">🕹️ MINICLIP</span>
+                    <span class="sd">Clásico de clásicos</span>
+                </span>
+            </a>
+
+        </div>
+
     </nav>
 
     <div class="footer">MiCBA OS © 2026 — Huelva, España</div>
@@ -151,15 +225,12 @@
         }
         updateClock(); setInterval(updateClock, 1000);
 
-        const items = document.querySelectorAll('.item');
-        let idx = -1;
-        document.addEventListener('keydown', e => {
-            if (e.key === 'ArrowDown') { idx = Math.min(idx+1, items.length-1); items[idx].focus(); }
-            else if (e.key === 'ArrowUp') { idx = Math.max(idx-1, 0); items[idx].focus(); }
-            else if (e.key === '1') items[0].click();
-            else if (e.key === '2') items[1].click();
-            else if (e.key === '3') items[2].click();
-        });
+        function toggleSubmenu() {
+            const toggle = document.getElementById('juegos-toggle');
+            const submenu = document.getElementById('juegos-submenu');
+            toggle.classList.toggle('open');
+            submenu.classList.toggle('open');
+        }
 
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
