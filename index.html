@@ -120,14 +120,59 @@
             </span>
         </a>
 
-        <a href="https://news.google.com/search?q=Huelva+Sevilla+Españahttps://www.google.com/search?q=noticias+Huelva+Sevilla+España&tbm=nwshl=eshttps://www.google.com/search?q=noticias+Huelva+Sevilla+España&tbm=nwsgl=EShttps://www.google.com/search?q=noticias+Huelva+Sevilla+España&tbm=nwsceid=ES:es" class="item">
+        <div class="item" id="noticias-toggle" onclick="toggleSubmenu('noticias')">
             <span class="n">02</span>
             <span class="emoji">📡</span>
             <span class="text">
                 <strong>NOTICIAS</strong>
                 <span>Huelva / Sevilla / España</span>
             </span>
-        </a>
+            <span class="toggle-arrow">►</span>
+        </div>
+
+        <div class="submenu" id="noticias-submenu">
+
+            <a href="https://www.huelvainformacion.es/" target="_blank">
+                <span class="sn">2.1</span>
+                <span class="text">
+                    <span class="st">🗞️ HUELVA INFORMACIÓN</span>
+                    <span class="sd">Noticias locales al momento</span>
+                </span>
+            </a>
+
+            <a href="https://www.diariodehuelva.es/" target="_blank">
+                <span class="sn">2.2</span>
+                <span class="text">
+                    <span class="st">🗞️ DIARIO DE HUELVA</span>
+                    <span class="sd">Actualidad onubense</span>
+                </span>
+            </a>
+
+            <a href="https://www.diariodesevilla.es/" target="_blank">
+                <span class="sn">2.3</span>
+                <span class="text">
+                    <span class="st">🗞️ DIARIO DE SEVILLA</span>
+                    <span class="sd">Noticias de Sevilla</span>
+                </span>
+            </a>
+
+            <a href="https://www.elmundo.es/ultimas-noticias.html" target="_blank">
+                <span class="sn">2.4</span>
+                <span class="text">
+                    <span class="st">🌐 EL MUNDO</span>
+                    <span class="sd">Últimas noticias España</span>
+                </span>
+            </a>
+
+            <a href="https://www.elconfidencial.com/ultima-hora-en-vivo/" target="_blank">
+                <span class="sn">2.5</span>
+                <span class="text">
+                    <span class="st">🌐 EL CONFIDENCIAL</span>
+                    <span class="sd">Última hora en directo</span>
+                </span>
+            </a>
+
+        </div>
 
         <a href="https://www.youtube.com/@LaLiga/videos" class="item">
             <span class="n">03</span>
@@ -138,7 +183,7 @@
             </span>
         </a>
 
-        <div class="item" id="juegos-toggle" onclick="toggleSubmenu()">
+        <div class="item" id="juegos-toggle" onclick="toggleSubmenu('juegos')">
             <span class="n">04</span>
             <span class="emoji">🎮</span>
             <span class="text">
@@ -221,9 +266,9 @@
         }
         updateClock(); setInterval(updateClock, 1000);
 
-        function toggleSubmenu() {
-            const toggle = document.getElementById('juegos-toggle');
-            const submenu = document.getElementById('juegos-submenu');
+        function toggleSubmenu(id) {
+            const toggle = document.getElementById(id + '-toggle');
+            const submenu = document.getElementById(id + '-submenu');
             toggle.classList.toggle('open');
             submenu.classList.toggle('open');
         }
