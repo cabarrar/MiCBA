@@ -7,31 +7,29 @@
     
     <!-- Configuración PWA -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0d0221">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#1e293b">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --neon-pink: #ff007f;
-            --neon-blue: #00f3ff;
-            --bg: #0d0221;
-            --card-bg: rgba(26, 11, 46, 0.9);
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --border-color: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
         }
 
         body {
-            font-family: 'Roboto Mono', monospace;
+            font-family: 'Inter', sans-serif;
             background: var(--bg);
-            color: white;
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             padding-bottom: 30px;
-            background-image: 
-                linear-gradient(rgba(255, 0, 127, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
         }
 
         header {
@@ -40,12 +38,11 @@
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--neon-blue);
-            text-shadow: 2px 2px 0 var(--neon-pink);
-            font-size: 2.2rem;
+            color: var(--text-main);
+            font-size: 2rem;
+            font-weight: 700;
             margin: 0;
-            letter-spacing: 4px;
+            letter-spacing: 1px;
         }
 
         .container {
@@ -53,54 +50,61 @@
             max-width: 420px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .card {
             background: var(--card-bg);
-            border: 2px solid var(--neon-blue);
-            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 14px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 14px;
             cursor: pointer;
-            transition: 0.2s ease;
+            transition: background 0.2s ease, transform 0.1s ease;
             text-decoration: none;
-            color: white;
-            box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+            color: var(--text-main);
         }
 
         .card:active {
-            transform: scale(0.97);
-            border-color: var(--neon-pink);
+            transform: scale(0.98);
+            background: #253346;
         }
 
         .icon {
-            font-size: 1.5rem;
-            background: #000;
+            font-size: 1.4rem;
+            background: #0f172a;
             padding: 10px;
-            border: 1px solid var(--neon-pink);
-            border-radius: 5px;
-            box-shadow: 0 0 8px rgba(255, 0, 127, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 40px;
-            height: 40px;
+            min-width: 38px;
+            height: 38px;
         }
 
         .card-text strong {
             display: block;
             font-size: 1rem;
-            color: var(--neon-blue);
-            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            color: var(--text-main);
         }
 
         .card-text p {
-            margin: 4px 0 0;
-            font-size: 0.8rem;
-            color: #ccc;
+            margin: 3px 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 15px 0 4px 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Contenedores de Juegos Embebidos */
@@ -108,24 +112,16 @@
             display: none;
             flex-direction: column;
             background: var(--card-bg);
-            border: 2px solid var(--neon-pink);
-            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             overflow: hidden;
-            margin-top: -5px;
+            margin-top: -4px;
         }
 
         .game-container iframe {
             width: 100%;
             height: 420px;
             border: none;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--neon-pink);
-            margin: 15px 0 5px 0;
-            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -137,90 +133,85 @@
 
     <div class="container">
 
+        <div class="section-title">📺 VÍDEOS Y ENTRETENIMIENTO</div>
+
         <!-- RAÚL CIMAS -->
         <a href="https://www.youtube.com/results?search_query=raul+cimas" target="_blank" class="card">
-            <div class="icon">🕹️</div>
+            <div class="icon">🎭</div>
             <div class="card-text">
-                <strong>RAÚL CIMAS</strong>
-                <p>Protocolo Risas / YouTube</p>
+                <strong>Raúl Cimas</strong>
+                <p>Protocolo Risas en YouTube</p>
             </div>
         </a>
 
-        <div class="section-title">🕹️ SALA RECREATIVA</div>
+        <!-- RESÚMENES LALIGA -->
+        <a href="https://www.youtube.com/results?search_query=resumenes+laliga+ea+sports" target="_blank" class="card">
+            <div class="icon">⚽</div>
+            <div class="card-text">
+                <strong>Resúmenes LaLiga</strong>
+                <p>Últimos partidos en YouTube</p>
+            </div>
+        </a>
+
+        <div class="section-title">🎮 JUEGOS</div>
 
         <!-- JUEGO 1: TETRIS -->
         <div class="card" onclick="toggleGame('gameTetris')">
-            <div class="icon">👾</div>
+            <div class="icon">🧩</div>
             <div class="card-text">
-                <strong>TETRIS RETRO</strong>
-                <p>Toca para abrir/cerrar juego</p>
+                <strong>Tetris</strong>
+                <p>Toca para jugar</p>
             </div>
         </div>
         <div id="gameTetris" class="game-container">
             <iframe src="https://chvin.github.io/react-tetris/" title="Tetris"></iframe>
         </div>
 
-        <!-- JUEGO 2: PAC-MAN -->
-        <div class="card" onclick="toggleGame('gamePacman')">
-            <div class="icon">🟡</div>
-            <div class="card-text">
-                <strong>PAC-MAN</strong>
-                <p>Toca para abrir/cerrar juego</p>
-            </div>
-        </div>
-        <div id="gamePacman" class="game-container">
-            <iframe src="https://freepacman.org/" title="Pac-Man"></iframe>
-        </div>
-
-        <!-- JUEGO 3: SNAKE -->
+        <!-- JUEGO 2: SNAKE -->
         <div class="card" onclick="toggleGame('gameSnake')">
             <div class="icon">🐍</div>
             <div class="card-text">
-                <strong>SNAKE RETRO</strong>
-                <p>Toca para abrir/cerrar juego</p>
+                <strong>Snake Classic</strong>
+                <p>Toca para jugar</p>
             </div>
         </div>
         <div id="gameSnake" class="game-container">
             <iframe src="https://playsnake.org/" title="Snake"></iframe>
         </div>
 
-        <div class="section-title">📡 PRENSA Y NOTICIAS</div>
+        <div class="section-title">📰 PRENSA</div>
 
-        <!-- ACCESOS DIRECTOS A PRENSA (SIN APIS QUE FALLEN) -->
+        <!-- NOTICIAS -->
         <a href="https://huelvainformacion.es" target="_blank" class="card">
             <div class="icon">📰</div>
             <div class="card-text">
-                <strong>HUELVA INFORMACIÓN</strong>
-                <p>Noticias Locales</p>
+                <strong>Huelva Información</strong>
+                <p>Noticias locales</p>
             </div>
         </a>
 
         <a href="https://elcorreoweb.es" target="_blank" class="card">
             <div class="icon">📰</div>
             <div class="card-text">
-                <strong>EL CORREO DE ANDALUCÍA</strong>
-                <p>Actualidad Sevilla / Región</p>
+                <strong>El Correo de Andalucía</strong>
+                <p>Actualidad regional</p>
             </div>
         </a>
 
     </div>
 
     <script>
-        // Función para desplegar/ocultar los juegos independientemente
         function toggleGame(id) {
             const element = document.getElementById(id);
             const isVisible = element.style.display === 'flex';
             
-            // Oculta todos los juegos abiertos primero
             document.querySelectorAll('.game-container').forEach(el => el.style.display = 'none');
             
-            // Si el seleccionado no estaba visible, lo muestra
             if (!isVisible) {
                 element.style.display = 'flex';
             }
         }
 
-        // Registro de Service Worker para la PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
