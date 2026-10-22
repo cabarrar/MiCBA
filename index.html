@@ -53,7 +53,7 @@
             max-width: 420px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 15px;
         }
 
         .card {
@@ -103,7 +103,7 @@
             color: #ccc;
         }
 
-        /* Sección de Juego Embebido */
+        /* Contenedores de Juegos Embebidos */
         .game-container {
             display: none;
             flex-direction: column;
@@ -116,53 +116,16 @@
 
         .game-container iframe {
             width: 100%;
-            height: 400px;
+            height: 420px;
             border: none;
         }
 
-        /* Sección de Noticias RSS */
-        .news-box {
-            background: var(--card-bg);
-            border: 2px solid var(--neon-blue);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .news-box h2 {
+        .section-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
             color: var(--neon-pink);
-            margin: 0 0 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.8rem;
-        }
-
-        .news-item {
-            padding: 8px 0;
-            border-bottom: 1px dashed rgba(0, 243, 255, 0.3);
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-item a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            line-height: 1.3;
-        }
-
-        .news-item a:hover {
-            color: var(--neon-blue);
+            margin: 15px 0 5px 0;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -174,7 +137,7 @@
 
     <div class="container">
 
-        <!-- 1. TARJETA RAÚL CIMAS -->
+        <!-- RAÚL CIMAS -->
         <a href="https://www.youtube.com/results?search_query=raul+cimas" target="_blank" class="card">
             <div class="icon">🕹️</div>
             <div class="card-text">
@@ -183,63 +146,81 @@
             </div>
         </a>
 
-        <!-- 2. JUEGO RETRO EMBEBIDO (TETRIS) -->
-        <div class="card" onclick="toggleGame()">
+        <div class="section-title">🕹️ SALA RECREATIVA</div>
+
+        <!-- JUEGO 1: TETRIS -->
+        <div class="card" onclick="toggleGame('gameTetris')">
             <div class="icon">👾</div>
             <div class="card-text">
                 <strong>TETRIS RETRO</strong>
-                <p>Toca para Jugar dentro de la App</p>
+                <p>Toca para abrir/cerrar juego</p>
             </div>
         </div>
-        <div id="gameBox" class="game-container">
-            <iframe src="https://chvin.github.io/react-tetris/" title="Tetris Retro"></iframe>
+        <div id="gameTetris" class="game-container">
+            <iframe src="https://chvin.github.io/react-tetris/" title="Tetris"></iframe>
         </div>
 
-        <!-- 3. SECCIÓN NOTICIAS RSS EN TIEMPO REAL -->
-        <div class="news-box">
-            <h2>📡 ÚLTIMA HORA NOTICIAS</h2>
-            <ul id="newsList" class="news-list">
-                <li class="news-item">Cargando noticias...</li>
-            </ul>
+        <!-- JUEGO 2: PAC-MAN -->
+        <div class="card" onclick="toggleGame('gamePacman')">
+            <div class="icon">🟡</div>
+            <div class="card-text">
+                <strong>PAC-MAN</strong>
+                <p>Toca para abrir/cerrar juego</p>
+            </div>
         </div>
+        <div id="gamePacman" class="game-container">
+            <iframe src="https://freepacman.org/" title="Pac-Man"></iframe>
+        </div>
+
+        <!-- JUEGO 3: SNAKE -->
+        <div class="card" onclick="toggleGame('gameSnake')">
+            <div class="icon">🐍</div>
+            <div class="card-text">
+                <strong>SNAKE RETRO</strong>
+                <p>Toca para abrir/cerrar juego</p>
+            </div>
+        </div>
+        <div id="gameSnake" class="game-container">
+            <iframe src="https://playsnake.org/" title="Snake"></iframe>
+        </div>
+
+        <div class="section-title">📡 PRENSA Y NOTICIAS</div>
+
+        <!-- ACCESOS DIRECTOS A PRENSA (SIN APIS QUE FALLEN) -->
+        <a href="https://huelvainformacion.es" target="_blank" class="card">
+            <div class="icon">📰</div>
+            <div class="card-text">
+                <strong>HUELVA INFORMACIÓN</strong>
+                <p>Noticias Locales</p>
+            </div>
+        </a>
+
+        <a href="https://elcorreoweb.es" target="_blank" class="card">
+            <div class="icon">📰</div>
+            <div class="card-text">
+                <strong>EL CORREO DE ANDALUCÍA</strong>
+                <p>Actualidad Sevilla / Región</p>
+            </div>
+        </a>
 
     </div>
 
-    <!-- CÓDIGO INTERACTIVO Y SERVICE WORKER -->
     <script>
-        // Desplegar/Ocultar el juego
-        function toggleGame() {
-            const box = document.getElementById('gameBox');
-            box.style.display = (box.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        // Lector de Noticias RSS (Google News España / Andalucía)
-        async function loadNews() {
-            const rssUrl = 'https://news.google.com/rss?hl=es&gl=ES&ceid=ES:es';
-            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-            const list = document.getElementById('newsList');
-
-            try {
-                const res = await fetch(apiUrl);
-                const data = await res.json();
-                list.innerHTML = '';
-                
-                // Mostrar los primeros 4 titulares
-                data.items.slice(0, 4).forEach(item => {
-                    const li = document.createElement('li');
-                    li.className = 'news-item';
-                    li.innerHTML = `<a href="${item.link}" target="_blank">▸ ${item.title}</a>`;
-                    list.appendChild(li);
-                });
-            } catch (err) {
-                list.innerHTML = '<li class="news-item">No se pudieron cargar las noticias.</li>';
+        // Función para desplegar/ocultar los juegos independientemente
+        function toggleGame(id) {
+            const element = document.getElementById(id);
+            const isVisible = element.style.display === 'flex';
+            
+            // Oculta todos los juegos abiertos primero
+            document.querySelectorAll('.game-container').forEach(el => el.style.display = 'none');
+            
+            // Si el seleccionado no estaba visible, lo muestra
+            if (!isVisible) {
+                element.style.display = 'flex';
             }
         }
 
-        // Cargar noticias al iniciar
-        loadNews();
-
-        // Registro de Service Worker para PWA
+        // Registro de Service Worker para la PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
