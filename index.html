@@ -106,23 +106,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* Contenedores de Juegos Embebidos */
-        .game-container {
-            display: none;
-            flex-direction: column;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            margin-top: -4px;
-        }
-
-        .game-container iframe {
-            width: 100%;
-            height: 420px;
-            border: none;
-        }
     </style>
 </head>
 <body>
@@ -156,28 +139,22 @@
         <div class="section-title">🎮 JUEGOS</div>
 
         <!-- JUEGO 1: TETRIS -->
-        <div class="card" onclick="toggleGame('gameTetris')">
+        <a href="https://chvin.github.io/react-tetris/" target="_blank" class="card">
             <div class="icon">🧩</div>
             <div class="card-text">
-                <strong>Tetris</strong>
-                <p>Toca para jugar</p>
+                <strong>Tetris Classic</strong>
+                <p>Jugar en la web</p>
             </div>
-        </div>
-        <div id="gameTetris" class="game-container">
-            <iframe src="https://chvin.github.io/react-tetris/" title="Tetris"></iframe>
-        </div>
+        </a>
 
         <!-- JUEGO 2: SNAKE -->
-        <div class="card" onclick="toggleGame('gameSnake')">
+        <a href="https://playsnake.org/" target="_blank" class="card">
             <div class="icon">🐍</div>
             <div class="card-text">
                 <strong>Snake Classic</strong>
-                <p>Toca para jugar</p>
+                <p>Jugar en la web</p>
             </div>
-        </div>
-        <div id="gameSnake" class="game-container">
-            <iframe src="https://playsnake.org/" title="Snake"></iframe>
-        </div>
+        </a>
 
         <div class="section-title">📰 PRENSA</div>
 
@@ -201,17 +178,6 @@
     </div>
 
     <script>
-        function toggleGame(id) {
-            const element = document.getElementById(id);
-            const isVisible = element.style.display === 'flex';
-            
-            document.querySelectorAll('.game-container').forEach(el => el.style.display = 'none');
-            
-            if (!isVisible) {
-                element.style.display = 'flex';
-            }
-        }
-
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
